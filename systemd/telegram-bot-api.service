@@ -1,0 +1,22 @@
+[Unit]
+Description=Telegram Local Bot API
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=telegrambotapi
+Group=teletorrent
+EnvironmentFile=/etc/teletorrent.env
+WorkingDirectory=/var/lib/telegram-bot-api
+ExecStart=/usr/local/bin/telegram-bot-api --local --api-id=${TELEGRAM_API_ID} --api-hash=${TELEGRAM_API_HASH} --http-ip-address=127.0.0.1 --http-port=8081 --dir=/var/lib/telegram-bot-api --temp-dir=/var/lib/telegram-bot-api/temp
+Restart=on-failure
+RestartSec=10
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/telegram-bot-api /srv/teletorrent/approved /tmp
+
+[Install]
+WantedBy=multi-user.target

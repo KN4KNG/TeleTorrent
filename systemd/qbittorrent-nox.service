@@ -1,0 +1,21 @@
+[Unit]
+Description=qBittorrent-nox
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=teletorrent
+Group=teletorrent
+UMask=007
+ExecStart=/usr/bin/qbittorrent-nox --profile=/var/lib/teletorrent/qbit --webui-port=8080
+Restart=on-failure
+RestartSec=10
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/srv/teletorrent /var/lib/teletorrent
+
+[Install]
+WantedBy=multi-user.target

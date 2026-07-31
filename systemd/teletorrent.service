@@ -1,0 +1,22 @@
+[Unit]
+Description=TeleTorrent Telegram Bot and Dashboard
+After=network-online.target qbittorrent-nox.service clamav-daemon.service telegram-bot-api.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=teletorrent
+Group=teletorrent
+WorkingDirectory=/opt/teletorrent
+EnvironmentFile=/etc/teletorrent.env
+ExecStart=/opt/teletorrent/.venv/bin/python -m teletorrent.main
+Restart=on-failure
+RestartSec=10
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/srv/teletorrent /var/lib/teletorrent /tmp
+
+[Install]
+WantedBy=multi-user.target

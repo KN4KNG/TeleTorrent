@@ -1,0 +1,5 @@
+python-telegram-bot[job-queue]>=22,<23
+qbittorrent-api>=2025.7
+Flask>=3.1,<4
+waitress>=3,<4
+psutil>=7,<8
