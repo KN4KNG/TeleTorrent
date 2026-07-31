@@ -66,6 +66,7 @@ The `api_id` and `api_hash` are required for the self-hosted Telegram Local Bot 
 ```bash
 git clone https://github.com/KN4KNG/teletorrent.git
 cd teletorrent
+chmod +x install.sh
 sudo ./install.sh
 ```
 
